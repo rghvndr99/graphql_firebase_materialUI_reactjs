@@ -22,7 +22,6 @@ const getAllDatabaseElement=async()=>{
            }
            return usersData;
        });
-     console.log("RDX 123"+JSON.stringify(response));
      return await response;
 };
 
@@ -32,7 +31,6 @@ const getAllDatabaseElement=async()=>{
 	const response= await db.ref(tableName).child(_id).remove().then(function(){
        return getAllDatabaseElement();
 	});
-  console.log("RDX"+JSON.stringify(response));
   return await response;
 }
 

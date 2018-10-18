@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import {Card,CardActions,CardContent,Button,Toolbar,Typography,CardActionArea,CardMedia,Avatar} from '@material-ui/core';
-import AssignmentIcon from '@material-ui/icons/Assignment';
+import {Card,CardActions,CardContent,Button,Toolbar,Typography,CardActionArea,CardMedia,Avatar,CircularProgress} from '@material-ui/core';
 import './app.css';
 import img1 from './img/user1.png';
 import img2 from './img/user2.png';
@@ -9,11 +8,27 @@ import img4 from './img/user4.png';
 class ListUser extends Component {
     constructor(props){
         super(props);
+        this.state={
+          showLoader:false
+        };
+        this.editHandlerFun=this.editHandlerFun.bind(this);
+        this.deleteHandlerFun=this.deleteHandlerFun.bind(this);
       }
+
+  editHandlerFun(item){
+      this.props.updateUserHandler(item);
+  }
+  deleteHandlerFun(item){
+     this.setState({
+           showLoader:true
+      });
+      this.props.deleteUserHandler(item)
+  }
    render() {
     const imgAry=[img1,img2,img3,img4];
     const imgName=imgAry[Math.floor(Math.random() * imgAry.length-1) + 1];
-    const {item,updateUserHandler,deleteUserHandler}=this.props;
+    const {item}=this.props;
+    const {showLoader}=this.state;
       return(
          <Card className="card">
              <CardActionArea>
@@ -21,6 +36,7 @@ class ListUser extends Component {
                    <Avatar className="avatar" alt={item.name} sizes="big" src={imgName}>
 
                   </Avatar>
+                {showLoader && <CircularProgress color="secondary" />}
                </CardMedia>
                <CardContent>
                 <Typography variant="h5" component="h2">
@@ -37,9 +53,10 @@ class ListUser extends Component {
                  </Typography>
                 </CardContent>
               </CardActionArea>
+
               <CardActions className="text-center">
-                <Button size="small" color="secondary" onClick={()=>updateUserHandler(item)}>Edit</Button>
-                <Button size="small" color="secondary" onClick={()=>deleteUserHandler(item)}>Delete</Button>
+                <Button size="small" color="secondary" onClick={()=>this.editHandlerFun(item)}>Edit</Button>
+                <Button size="small" color="secondary" onClick={()=>this.deleteHandlerFun(item)}>Delete</Button>
               </CardActions>
           </Card>
       )
