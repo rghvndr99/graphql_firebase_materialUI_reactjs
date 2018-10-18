@@ -47,14 +47,16 @@ class Main extends Component {
       });
       });
   };
+
   //deleting user
  deleteUserHandler(obj){
     deleteUser(obj).then((userList)=>{
       this.setState({
-        userList
-      });
-      });
+          userList
+        });
+    });
   }
+
 addUserHandler(obj){
 addUser(obj).then((userList)=>{
     this.setState({

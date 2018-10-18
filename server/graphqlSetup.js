@@ -1,5 +1,5 @@
 var {buildSchema}=require('graphql');
-const {getAllUsers,getupdatedUser,getDeleteUser,addNewUser}=require('./operation.js');
+const {addupdateDatainFirebase,getAllDatabaseElement,deleteDatabseUser}=require('./operation.js');
 
  const schema=buildSchema(`
 	 type Query{
@@ -17,12 +17,13 @@ const {getAllUsers,getupdatedUser,getDeleteUser,addNewUser}=require('./operation
 	 	email:String,
 	 	address:String
 	 }
+
 	`);
  const rootResolver={
-	alluser:()=>getAllUsers(),
-	updateuser:(obj)=>getupdatedUser(obj),
-	deleteuser:(obj)=>getDeleteUser(obj),
-	adduser:(obj)=>addNewUser(obj),
+	alluser:()=>getAllDatabaseElement(),
+	updateuser:(obj)=>addupdateDatainFirebase(obj),
+	deleteuser:(obj)=>deleteDatabseUser(obj),
+	adduser:(obj)=>addupdateDatainFirebase(obj),
 }
 exports.schema=schema;
 exports.rootResolver=rootResolver;

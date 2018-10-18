@@ -3,7 +3,7 @@ const cors=require('cors');
 const bodyParser = require('body-parser');
 const expressGraphQl=require('express-graphql');
 const {schema,rootResolver}=require('./graphqlSetup.js');
-//const {addupdateDatainFirebase,getAllDatabaseElement,deleteDatabseUser}=require('./operation.js');
+const {addupdateDatainFirebase,getAllDatabaseElement,deleteDatabseUser}=require('./operation.js');
 
 var app=express();
 
@@ -28,4 +28,4 @@ app.use('/graphql',expressGraphQl({
        graphiql:true
 }));
 
-app.listen(5001,()=>console.log("server is running on port no: 5001/graphql"));
+app.listen(5001,()=>{console.log("server is running on port no: 5001/graphql")});
