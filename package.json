@@ -1,0 +1,21 @@
+{
+  "name": "graphql_firebase_materialui_reactjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-api": "node server/server.js",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rghvndr99/graphql_firebase_materialUI_reactjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rghvndr99/graphql_firebase_materialUI_reactjs/issues"
+  },
+  "homepage": "https://github.com/rghvndr99/graphql_firebase_materialUI_reactjs#readme"
+}
